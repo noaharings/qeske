@@ -1,0 +1,35 @@
+<svg width="312" height="120" viewBox="0 0 312 120" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .stroke { fill: none; stroke: #000; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+
+  <g transform="translate(-10,12)">
+    <!-- Vertical rectangular Q -->
+    <rect x="20" y="20" width="48" height="64" rx="4" class="stroke"/>
+
+    <!-- Inner counter, vertically centered -->
+    <rect x="32" y="34" width="24" height="32" rx="3" class="stroke"/>
+
+    <!-- Subtle Q tail -->
+    <line x1="68" y1="56" x2="80" y2="56" class="stroke"/>
+
+    <!-- è accent (true accent grave) -->
+    <line x1="102" y1="18" x2="112" y2="28" class="stroke"/>
+
+    <!-- è -->
+    <path d="M132 48 h-40 v28 h32" class="stroke"/>
+    <line x1="132" y1="62" x2="104" y2="62" class="stroke"/>
+
+    <!-- s -->
+    <path d="M156 48 h36 v14 h-36 v14 h36" class="stroke"/>
+
+    <!-- k -->
+    <line x1="220" y1="48" x2="220" y2="76" class="stroke"/>
+    <line x1="220" y1="62" x2="246" y2="48" class="stroke"/>
+    <line x1="220" y1="62" x2="246" y2="76" class="stroke"/>
+
+    <!-- e -->
+    <path d="M312 48 h-40 v28 h32" class="stroke"/>
+    <line x1="312" y1="62" x2="284" y2="62" class="stroke"/>
+  </g>
+</svg>
