@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Qèske — Reclaim Your Focus</title>
+  <title>Qèske — Coming Soon</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -18,77 +18,90 @@
       color: #fff;
       line-height: 1.6;
       overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* Header */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 20px 60px;
-      background: rgba(10, 10, 10, 0.8);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .container {
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
     }
 
     .logo-container {
       display: flex;
       align-items: center;
-      gap: 20px;
+      justify-content: center;
+      margin-bottom: 60px;
     }
 
-    .logo-svg {
-      width: 50px;
-      height: 50px;
+    .logo-image {
+      width: 200px;
+      height: auto;
+      animation: float 6s ease-in-out infinite;
     }
 
-    .logo-text {
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .coming-soon {
+      font-size: 2.5rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 80px;
+      text-transform: uppercase;
+    }
+
+    .contact-box {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 50px 40px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+    }
+
+    .contact-box h2 {
       font-size: 1.8rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
       color: #fff;
+      margin-bottom: 15px;
+      font-weight: 600;
     }
 
-    .preorder-btn-header {
-      padding: 12px 32px;
-      background: transparent;
-      color: #4A90E2;
-      border: 2px solid #4A90E2;
+    .contact-box p {
+      color: rgba(255,255,255,0.6);
+      font-size: 1.05rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .email-link {
+      display: inline-block;
+      padding: 18px 45px;
+      background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+      color: #fff;
       border-radius: 50px;
-      font-size: 0.95rem;
       font-weight: 600;
-      cursor: pointer;
+      text-decoration: none;
       transition: all 0.3s;
       letter-spacing: 0.5px;
+      box-shadow: 0 8px 30px rgba(74, 144, 226, 0.4);
     }
 
-    .preorder-btn-header:hover {
-      background: #4A90E2;
-      color: #fff;
-      transform: translateY(-2px);
+    .email-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(74, 144, 226, 0.6);
     }
 
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 120px 60px 60px;
-      background: radial-gradient(ellipse at top center, rgba(74, 144, 226, 0.15), transparent 60%),
-                  radial-gradient(ellipse at bottom right, rgba(53, 122, 189, 0.1), transparent 50%),
-                  #0a0a0a;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
+    .background-glow {
+      position: fixed;
       top: -200px;
       left: 50%;
       transform: translateX(-50%);
@@ -97,6 +110,7 @@
       background: radial-gradient(circle, rgba(74, 144, 226, 0.2), transparent 70%);
       filter: blur(120px);
       animation: pulse 8s ease-in-out infinite;
+      z-index: 0;
     }
 
     @keyframes pulse {
@@ -104,765 +118,45 @@
       50% { transform: translateX(-50%) scale(1.3); opacity: 0.7; }
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      max-width: 1400px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-content h1 {
-      font-size: 5rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      margin-bottom: 35px;
-      line-height: 1.1;
-      background: linear-gradient(135deg, #fff 0%, #4A90E2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-content .tagline {
-      font-size: 1.6rem;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 25px;
-      font-weight: 400;
-      line-height: 1.6;
-    }
-
-    .hero-content .description {
-      font-size: 1.15rem;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 50px;
-      line-height: 1.9;
-      max-width: 560px;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .btn-primary {
-      padding: 20px 50px;
-      background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-      color: #fff;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      letter-spacing: 0.5px;
-      box-shadow: 0 8px 30px rgba(74, 144, 226, 0.4);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(74, 144, 226, 0.6);
-    }
-
-    .btn-secondary {
-      padding: 20px 50px;
-      background: transparent;
-      color: rgba(255,255,255,0.7);
-      border: 2px solid rgba(255,255,255,0.2);
-      border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s;
-      letter-spacing: 0.5px;
-    }
-
-    .btn-secondary:hover {
-      border-color: rgba(255,255,255,0.4);
-      color: #fff;
-    }
-
-    /* Product Visualization */
-    .product-visual {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      perspective: 1000px;
-    }
-
-    .device-3d {
-      position: relative;
-      width: 350px;
-      height: 350px;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotateY(0deg); }
-      50% { transform: translateY(-30px) rotateY(10deg); }
-    }
-
-    .device-main {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
-      border: 3px solid rgba(74, 144, 226, 0.4);
-      border-radius: 50%;
-      position: relative;
-      box-shadow: 0 30px 80px rgba(74, 144, 226, 0.3),
-                  inset 0 2px 0 rgba(255,255,255,0.3),
-                  0 0 60px rgba(74, 144, 226, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .device-main::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(circle, rgba(74, 144, 226, 0.6), transparent 70%);
-      border-radius: 50%;
-      animation: ripple 3s ease-out infinite;
-    }
-
-    @keyframes ripple {
-      0% {
-        width: 120px;
-        height: 120px;
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.8;
-      }
-      80% {
-        opacity: 0.2;
-      }
-      100% {
-        width: 350px;
-        height: 350px;
-        opacity: 0;
-      }
-    }
-
-    .device-glow {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100px;
-      height: 100px;
-      background: radial-gradient(circle, #4A90E2, transparent 70%);
-      border-radius: 50%;
-      filter: blur(30px);
-      animation: glow 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes glow {
-      from { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-      to { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
-    }
-
-    .proximity-rings {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .ring {
-      position: absolute;
-      border: 2px dashed rgba(74, 144, 226, 0.3);
-      border-radius: 50%;
-      animation: rotate 20s linear infinite;
-    }
-
-    .ring-1 {
-      width: 440px;
-      height: 440px;
-      top: -45px;
-      left: -45px;
-    }
-
-    .ring-2 {
-      width: 550px;
-      height: 550px;
-      top: -100px;
-      left: -100px;
-      animation-duration: 30s;
-      animation-direction: reverse;
-    }
-
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .phone-indicator {
-      position: absolute;
-      top: 20%;
-      right: -80px;
-      width: 80px;
-      height: 140px;
-      background: rgba(255,255,255,0.08);
-      border: 3px solid rgba(255,255,255,0.2);
-      border-radius: 16px;
-      animation: phoneFloat 4s ease-in-out infinite;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    }
-
-    @keyframes phoneFloat {
-      0%, 100% { transform: translateX(0) translateY(0); }
-      50% { transform: translateX(15px) translateY(-10px); }
-    }
-
-    /* Impact Section */
-    .impact-section {
-      padding: 140px 60px;
-      background: #000;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 3.2rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      margin-bottom: 25px;
-      color: #fff;
-      line-height: 1.2;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      font-size: 1.3rem;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 100px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .impact-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 50px;
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-
-    .impact-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      padding: 60px 50px;
-      border-radius: 28px;
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .impact-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(74, 144, 226, 0.5), transparent);
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-
-    .impact-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(74, 144, 226, 0.3);
-      box-shadow: 0 30px 70px rgba(0,0,0,0.5);
-      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-    }
-
-    .impact-card:hover::before {
-      opacity: 1;
-    }
-
-    .impact-icon {
-      font-size: 3.5rem;
-      margin-bottom: 30px;
-      display: block;
-    }
-
-    .impact-card h3 {
-      font-size: 1.8rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-      letter-spacing: 0.02em;
-      color: #fff;
-    }
-
-    .impact-card p {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    /* Transformation Section */
-    .transformation-section {
-      padding: 140px 60px;
-      background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
-      position: relative;
-    }
-
-    .transformation-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-
-    .transformation-card {
-      text-align: center;
-      padding: 50px 35px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
-      transition: all 0.3s;
-    }
-
-    .transformation-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(74, 144, 226, 0.25);
-    }
-
-    .transformation-emoji {
-      font-size: 3rem;
-      margin-bottom: 25px;
-      display: block;
-    }
-
-    .transformation-card h3 {
-      font-size: 1.4rem;
-      font-weight: 600;
-      margin-bottom: 15px;
-      letter-spacing: 0.02em;
-    }
-
-    .transformation-card p {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.7;
-    }
-
-    /* Testimonial Section */
-    .testimonial-section {
-      padding: 140px 60px;
-      background: #000;
-      text-align: center;
-    }
-
-    .testimonial-container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 70px 60px;
-      background: linear-gradient(135deg, rgba(74, 144, 226, 0.08), rgba(53, 122, 189, 0.04));
-      border: 1px solid rgba(74, 144, 226, 0.2);
-      border-radius: 32px;
-    }
-
-    .testimonial-quote {
-      font-size: 1.8rem;
-      font-weight: 400;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.9);
-      margin-bottom: 35px;
-      font-style: italic;
-    }
-
-    .testimonial-author {
-      font-size: 1.1rem;
-      color: #4A90E2;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    /* CTA Section */
-    .cta-section {
-      padding: 160px 60px;
-      background: radial-gradient(ellipse at center, rgba(74, 144, 226, 0.15), transparent 70%), #0a0a0a;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(74, 144, 226, 0.15), transparent 60%);
-      filter: blur(100px);
-    }
-
-    .cta-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta-section h2 {
-      font-size: 4rem;
-      font-weight: 700;
-      margin-bottom: 30px;
-      letter-spacing: 0.02em;
-      line-height: 1.2;
-    }
-
-    .cta-section p {
-      font-size: 1.4rem;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 60px;
-      max-width: 750px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.7;
-    }
-
-    .cta-box {
-      max-width: 650px;
-      margin: 0 auto;
-      background: linear-gradient(135deg, rgba(74, 144, 226, 0.12) 0%, rgba(53, 122, 189, 0.06) 100%);
-      border: 2px solid rgba(74, 144, 226, 0.3);
-      border-radius: 28px;
-      padding: 60px 50px;
-    }
-
-    .limited-badge {
-      display: inline-block;
-      padding: 10px 24px;
-      background: rgba(255, 68, 68, 0.15);
-      border: 1px solid rgba(255, 68, 68, 0.3);
-      border-radius: 50px;
-      color: #ff4444;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin-bottom: 30px;
-    }
-
-    .price-tag {
-      font-size: 4rem;
-      font-weight: 700;
-      color: #4A90E2;
-      margin-bottom: 15px;
-      letter-spacing: -1px;
-    }
-
-    .price-tag .original {
-      font-size: 2.2rem;
-      color: rgba(255,255,255,0.3);
-      text-decoration: line-through;
-      margin-left: 20px;
-    }
-
-    .savings {
-      font-size: 1.15rem;
-      color: #4A90E2;
-      font-weight: 600;
-      margin-bottom: 40px;
-      letter-spacing: 0.5px;
-    }
-
-    .btn-cta-main {
-      width: 100%;
-      padding: 24px;
-      background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-      color: #fff;
-      border: none;
-      border-radius: 16px;
-      font-size: 1.3rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s;
-      letter-spacing: 1px;
-      box-shadow: 0 12px 40px rgba(74, 144, 226, 0.4);
-      margin-bottom: 25px;
-    }
-
-    .btn-cta-main:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 50px rgba(74, 144, 226, 0.6);
-    }
-
-    .cta-details {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.6;
-    }
-
-    /* Footer */
-    footer {
-      padding: 60px;
-      background: #000;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      text-align: center;
-      color: rgba(255,255,255,0.4);
-    }
-
-    .footer-logo-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 60px;
-      }
-
-      .hero-content {
-        text-align: center;
-      }
-
-      .hero-content .description {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-cta {
-        justify-content: center;
-      }
-
-      .impact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .transformation-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .phone-indicator {
-        right: -40px;
-        width: 60px;
-        height: 100px;
-        font-size: 2rem;
-      }
-    }
-
     @media (max-width: 768px) {
-      header {
-        padding: 15px 30px;
+      .logo-image {
+        width: 150px;
       }
 
-      .logo-svg {
-        width: 40px;
-        height: 40px;
+      .coming-soon {
+        font-size: 1.5rem;
+        letter-spacing: 0.2em;
       }
 
-      .logo-text {
-        font-size: 1.3rem;
-      }
-
-      .hero {
-        padding: 100px 30px 60px;
-      }
-
-      .hero-content h1 {
-        font-size: 2.8rem;
-      }
-
-      .hero-content .tagline {
-        font-size: 1.2rem;
-      }
-
-      .hero-cta {
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .btn-primary, .btn-secondary {
-        width: 100%;
-      }
-
-      .device-3d {
-        width: 250px;
-        height: 250px;
-      }
-
-      .ring-1, .ring-2 {
-        display: none;
-      }
-
-      .impact-section, .transformation-section, .testimonial-section, .cta-section {
-        padding: 100px 30px;
-      }
-
-      .section-title, .cta-section h2 {
-        font-size: 2.2rem;
-      }
-
-      .section-subtitle {
-        font-size: 1.1rem;
-      }
-
-      .testimonial-quote {
-        font-size: 1.3rem;
-      }
-
-      .price-tag {
-        font-size: 3rem;
-      }
-
-      .cta-box {
+      .contact-box {
         padding: 40px 30px;
+      }
+
+      .contact-box h2 {
+        font-size: 1.5rem;
+      }
+
+      .contact-box p {
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
+  <div class="background-glow"></div>
 
-  <header>
+  <div class="container">
     <div class="logo-container">
-      <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="50" cy="50" rx="35" ry="25" fill="none" stroke="#4A90E2" stroke-width="1.5" transform="rotate(-15 50 50)"/>
-        <ellipse cx="50" cy="50" rx="35" ry="25" fill="none" stroke="#4A90E2" stroke-width="1.5" transform="rotate(15 50 50)"/>
-        <ellipse cx="50" cy="50" rx="35" ry="25" fill="none" stroke="#4A90E2" stroke-width="1.5" transform="rotate(45 50 50)"/>
-        <ellipse cx="50" cy="50" rx="35" ry="25" fill="none" stroke="#357ABD" stroke-width="1.5" transform="rotate(-45 50 50)"/>
-        <circle cx="50" cy="50" r="8" fill="#4A90E2"/>
-        <circle cx="50" cy="50" r="4" fill="#fff"/>
-      </svg>
-      <div class="logo-text">QÈSKE</div>
+      <img src="qeske_svg.svg" alt="Qèske Logo" class="logo-image">
     </div>
-    <button class="preorder-btn-header">PRE-ORDER</button>
-  </header>
 
-  <section class="hero">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <h1>RECLAIM YOUR FOCUS</h1>
-        <p class="tagline">A physical beacon that creates distraction-free zones in your life.</p>
-        <p class="description">Walk to your QÈSKE device and your phone automatically locks distracting apps. Leave, and everything returns. No willpower needed. No apps to open. Just automatic, effortless focus.</p>
-        
-        <div class="hero-cta">
-          <button class="btn-primary">SEE HOW IT WORKS</button>
-          <button class="btn-secondary">WATCH VIDEO</button>
-        </div>
-      </div>
+    <div class="coming-soon">Coming Soon</div>
 
-      <div class="product-visual">
-        <div class="proximity-rings">
-          <div class="ring ring-1"></div>
-          <div class="ring ring-2"></div>
-        </div>
-        <div class="device-3d">
-          <div class="device-main">
-            <div class="device-glow"></div>
-          </div>
-        </div>
-        <div class="phone-indicator">📱</div>
-      </div>
+    <div class="contact-box">
+      <h2>Contact & Support</h2>
+      <p>Have questions about QÈSKE? We're here to help.</p>
+      <a href="mailto:haringsnoa@gmail.com" class="email-link">Email Support</a>
     </div>
-  </section>
-
-  <section class="impact-section">
-    <h2 class="section-title">TRANSFORM YOUR RELATIONSHIP WITH TECHNOLOGY</h2>
-    <p class="section-subtitle">Stop fighting with your phone. Create spaces where focus happens naturally.</p>
-    
-    <div class="impact-grid">
-      <div class="impact-card">
-        <span class="impact-icon">💼</span>
-        <h3>DO YOUR BEST WORK</h3>
-        <p>Enter deep flow states without the constant pull of notifications. Finish projects faster, think more clearly, and produce work you're proud of. Your desk becomes a sanctuary of productivity.</p>
-      </div>
-      
-      <div class="impact-card">
-        <span class="impact-icon">🌙</span>
-        <h3>SLEEP LIKE YOU USED TO</h3>
-        <p>No more doom-scrolling until 2am. Your bedroom becomes a phone-free zone the moment you enter. Wake up refreshed, not exhausted from hours of mindless content consumption.</p>
-      </div>
-      
-      <div class="impact-card">
-        <span class="impact-icon">👨‍👩‍👧‍👦</span>
-        <h3>BE TRULY PRESENT</h3>
-        <p>Dinner conversations without phones on the table. Family time without the temptation to "just check quickly." Create moments where the people in front of you get your full attention.</p>
-      </div>
-      
-      <div class="impact-card">
-        <span class="impact-icon">📚</span>
-        <h3>LEARN DEEPLY AGAIN</h3>
-        <p>Remember when you could read for hours? Study without checking your phone every 10 minutes? Rediscover the joy of absorbing knowledge without constant digital interruption.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="transformation-section">
-    <h2 class="section-title">ONE DEVICE, ENDLESS POSSIBILITIES</h2>
-    <p class="section-subtitle">Place QÈSKE anywhere you need to reclaim your attention.</p>
-    
-    <div class="transformation-grid">
-      <div class="transformation-card">
-        <span class="transformation-emoji">🏡</span>
-        <h3>YOUR HOME OFFICE</h3>
-        <p>Transform any room into a professional workspace. Block social media during work hours automatically.</p>
-      </div>
-      
-      <div class="transformation-card">
-        <span class="transformation-emoji">🛏️</span>
-        <h3>YOUR BEDROOM</h3>
-        <p>Create a sleep sanctuary. Everything blocks when you enter, helping you wind down naturally.</p>
-      </div>
-      
-      <div class="transformation-card">
-        <span class="transformation-emoji">📖</span>
-        <h3>YOUR STUDY SPACE</h3>
-        <p>Build a learning environment where concentration comes easily and distractions disappear.</p>
-      </div>
-      
-      <div class="transformation-card">
-        <span class="transformation-emoji">🍽️</span>
-        <h3>YOUR DINING ROOM</h3>
-        <p>Make meals sacred again. No phones, just conversation and connection with loved ones.</p>
-      </div>
-      
-      <div class="transformation-card">
-        <span class="transformation-emoji">🎯</span>
-        <h3>YOUR CREATIVE STUDIO</h3>
-        <p>Whether painting, writing, or crafting—enter your flow state without digital distractions.</p>
-      </div>
-      
-      <div class="transformation-card">
-        <span class="transformation-emoji">🧘</span>
-        <h3>YOUR MEDITATION CORNER</h3>
-        <p>Create a mindful space where your phone can't intrude on your practice and peace.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-<section class="contact-section">
-  <div class="contact-container" style="max-width: 800px; margin: 0 auto; text-align: center; padding: 80px 20px;">
-    <h2 style="font-size: 2.5rem; color: #fff; margin-bottom: 20px;">Contact & Support</h2>
-    <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 30px;">
-      Have questions or need help with QÈSKE? We're here to assist you.
-    </p>
-    <a href="mailto:haringsnoa@gmail.com" style="display: inline-block; padding: 18px 40px; background: #4A90E2; color: #fff; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s;">Email Support</a>
-    <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-top: 15px;">
-</section>
-
-
-  
+  </div>
+</body>
+</html>
